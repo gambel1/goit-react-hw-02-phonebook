@@ -1,11 +1,11 @@
 import { ContactListUl, ContactListLi } from './ContactsList.styled';
 import PropTypes from 'prop-types';
 export default function ContactsList(props) {
-  const { deleteContacts, filteredContact } = props;
+  const { deleteContacts, filteredContacts } = props;
   return (
     <>
       <ContactListUl>
-        {filteredContact.map(({ id, name, number }) => {
+        {filteredContacts.map(({ id, name, number }) => {
           return (
             <ContactListLi key={id}>
               <span>{name}</span>
@@ -22,7 +22,7 @@ export default function ContactsList(props) {
 }
 
 ContactsList.propTypes = {
-  filteredContact: PropTypes.arrayOf(
+  filteredContacts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,

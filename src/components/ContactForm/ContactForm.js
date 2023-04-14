@@ -5,8 +5,6 @@ import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 export default ContactForm;
 
-const contactId = nanoid();
-
 const initialValues = {
   id: '',
   name: '',
@@ -14,7 +12,8 @@ const initialValues = {
 };
 
 const shema = yup.object().shape({
-  name: yup.string()
+  name: yup
+    .string()
     .min(2, 'Too Short!')
     .max(70, 'Too Long!')
     .required('Required'),
@@ -25,7 +24,7 @@ function ContactForm(props) {
   const { onSubmit } = props;
   function handleSubmit(values, { resetForm }) {
     const newContact = {
-      id: 'id' + contactId,
+      id: nanoid(),
       name: values.name,
       number: values.number,
     };

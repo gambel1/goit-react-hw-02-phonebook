@@ -16,7 +16,9 @@ export default class App extends React.Component {
 
   handleChange = event => {
     this.setState(({ contacts }) =>
-      contacts.find(contact => contact.names === event.name)
+      contacts.find(
+        contact => contact.name.toLowerCase() === event.name.toLowerCase()
+      )
         ? alert(`${event.name} is already in contacts`)
         : { contacts: [event, ...contacts] }
     );
@@ -35,7 +37,7 @@ export default class App extends React.Component {
 
   render() {
     const { contacts, filter } = this.state;
-    const filteredContact = contacts.filter(contact =>
+    const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
     return (
@@ -46,7 +48,7 @@ export default class App extends React.Component {
         <Filter filterValue={filter} filterContact={this.filterContact} />
         <ContactsList
           deleteContacts={this.deleteFilterContactId}
-          filteredContact={filteredContact}
+          filteredContacts={filteredContacts}
         />
       </div>
     );
