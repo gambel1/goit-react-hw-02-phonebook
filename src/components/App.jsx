@@ -16,7 +16,7 @@ export default class App extends React.Component {
 
   handleChange = event => {
     this.setState(({ contacts }) =>
-      contacts.find(contact => contact.name === event.name)
+      contacts.find(contact => contact.names === event.name)
         ? alert(`${event.name} is already in contacts`)
         : { contacts: [event, ...contacts] }
     );
