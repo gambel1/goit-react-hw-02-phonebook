@@ -42,7 +42,7 @@ function ContactForm(props) {
       <Form autoComplete="off">
         <FormWrapper>
           <FormLabel htmlFor="name">Name</FormLabel>
-          <input
+          <Field
             type="text"
             name="name"
             id="name"
